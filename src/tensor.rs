@@ -1,5 +1,4 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 use crate::symbolic::SymbolicExpr;
 use crate::TensorError;
 
@@ -25,7 +24,7 @@ pub struct RiemannResult {
     pub dimension: usize,
 }
 
-pub fn parse_metric_tensor(metric_strings: Vec<Vec<String>>, coords: &[String]) -> Result<MetricTensor, TensorError> {
+pub fn parse_metric_tensor(metric_strings: Vec<Vec<String>>, _coords: &[String]) -> Result<MetricTensor, TensorError> {
     let n = metric_strings.len();
     
     // Validate square matrix

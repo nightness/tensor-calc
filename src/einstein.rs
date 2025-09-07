@@ -40,7 +40,7 @@ pub struct EinsteinEquationSystem {
 
 pub fn construct_einstein_field_equations(
     stress_energy: &StressEnergyTensor,
-    coordinates: &[String],
+    _coordinates: &[String],
     cosmological_constant: Option<SymbolicExpr>
 ) -> Result<EinsteinEquationSystem, TensorError> {
     let n = stress_energy.components.len();
@@ -97,7 +97,7 @@ pub fn solve_vacuum_einstein_equations(
 
 fn solve_spherically_symmetric_vacuum(
     coordinates: &[String],
-    boundary_conditions: &[BoundaryCondition]
+    _boundary_conditions: &[BoundaryCondition]
 ) -> Result<Vec<EinsteinSolution>, TensorError> {
     // Schwarzschild ansatz: ds² = -f(r)dt² + h(r)dr² + r²(dθ² + sin²θ dφ²)
     // For 4D coordinates [t, r, theta, phi]
@@ -154,7 +154,7 @@ fn solve_spherically_symmetric_vacuum(
 
 fn solve_flrw_universe(
     coordinates: &[String],
-    boundary_conditions: &[BoundaryCondition]
+    _boundary_conditions: &[BoundaryCondition]
 ) -> Result<Vec<EinsteinSolution>, TensorError> {
     // FLRW metric: ds² = -dt² + a(t)²[dr²/(1-kr²) + r²(dθ² + sin²θ dφ²)]
     // For 4D coordinates [t, r, theta, phi]
@@ -214,7 +214,7 @@ fn solve_flrw_universe(
 
 fn solve_axisymmetric_vacuum(
     coordinates: &[String],
-    boundary_conditions: &[BoundaryCondition]
+    _boundary_conditions: &[BoundaryCondition]
 ) -> Result<Vec<EinsteinSolution>, TensorError> {
     // Placeholder for axisymmetric solutions (Kerr, etc.)
     // This would require more sophisticated solving techniques
@@ -254,15 +254,15 @@ fn solve_axisymmetric_vacuum(
 pub fn verify_einstein_solution(
     solution: &EinsteinSolution,
     stress_energy: Option<&StressEnergyTensor>,
-    cosmological_constant: Option<SymbolicExpr>
+    _cosmological_constant: Option<SymbolicExpr>
 ) -> Result<bool, TensorError> {
     // Verify that G_μν + Λg_μν = 8πT_μν for the given solution
     
     // Calculate Einstein tensor for the solution metric
-    let einstein_tensor = calculate_einstein_tensor(&solution.metric_tensor, &solution.coordinates)?;
+    let _einstein_tensor = calculate_einstein_tensor(&solution.metric_tensor, &solution.coordinates)?;
     
     // If we have a stress-energy tensor, check field equations
-    if let Some(t_mu_nu) = stress_energy {
+    if let Some(_t_mu_nu) = stress_energy {
         // This would involve substituting the metric into field equations
         // and checking if they're satisfied symbolically or numerically
         
@@ -278,13 +278,13 @@ pub fn verify_einstein_solution(
 }
 
 pub fn solve_einstein_constraint_equations(
-    initial_data: &MetricTensor,
-    coordinates: &[String]
+    _initial_data: &MetricTensor,
+    _coordinates: &[String]
 ) -> Result<Vec<TensorComponent>, TensorError> {
     // Solve the Hamiltonian and momentum constraints
     // This is needed for numerical relativity initial value problems
     
-    let n = initial_data.len();
+    let n = _initial_data.len();
     let mut constraints = Vec::new();
     
     // Hamiltonian constraint: R + K² - K_ij K^ij = 16π ρ
