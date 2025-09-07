@@ -1,16 +1,7 @@
 use clap::{Parser, Subcommand};
-use serde::{Deserialize, Serialize};
 use serde_json;
 use std::collections::HashMap;
-use thiserror::Error;
-
-mod symbolic;
-mod tensor;
-mod einstein;
-
-use tensor::*;
-use symbolic::*;
-use einstein::*;
+use tensor_calc::*;
 
 #[derive(Parser)]
 #[command(name = "tensor-calc")]
@@ -108,24 +99,6 @@ enum Commands {
     },
 }
 
-#[derive(Error, Debug)]
-pub enum TensorError {
-    #[error("JSON parsing error: {0}")]
-    JsonError(#[from] serde_json::Error),
-    #[error("Invalid metric tensor: {0}")]
-    InvalidMetric(String),
-    #[error("Computation error: {0}")]
-    ComputationError(String),
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TensorResult {
-    pub result_type: String,
-    pub data: serde_json::Value,
-    pub coordinates: Vec<String>,
-    pub success: bool,
-    pub error: Option<String>,
-}
 
 fn main() {
     let cli = Cli::parse();
