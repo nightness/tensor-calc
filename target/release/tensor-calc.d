@@ -1,1 +1,0 @@
-/home/nightness/dev/brainwires-studio/rust/tensor-calc/target/release/tensor-calc: /home/nightness/dev/brainwires-studio/rust/tensor-calc/src/einstein.rs /home/nightness/dev/brainwires-studio/rust/tensor-calc/src/main.rs /home/nightness/dev/brainwires-studio/rust/tensor-calc/src/symbolic.rs /home/nightness/dev/brainwires-studio/rust/tensor-calc/src/tensor.rs
