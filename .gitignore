@@ -3,6 +3,8 @@
 debug/
 target/
 
+./tensor-calc
+
 # Binary executable
 tensor-calc
 
