@@ -57,6 +57,13 @@ impl SymbolicExpr {
             return Ok(SymbolicExpr::Zero);
         }
         
+        // Handle special cases first
+        match input {
+            "0" => return Ok(SymbolicExpr::Zero),
+            "1" => return Ok(SymbolicExpr::One),
+            _ => {}
+        }
+        
         // Handle constants
         if let Ok(val) = input.parse::<f64>() {
             return Ok(SymbolicExpr::Constant(val));
@@ -64,11 +71,7 @@ impl SymbolicExpr {
         
         // Handle simple variables
         if input.chars().all(|c| c.is_alphanumeric() || c == '_') {
-            return match input {
-                "0" => Ok(SymbolicExpr::Zero),
-                "1" => Ok(SymbolicExpr::One),
-                _ => Ok(SymbolicExpr::Variable(input.to_string())),
-            };
+            return Ok(SymbolicExpr::Variable(input.to_string()));
         }
         
         // Handle powers (r^2, etc.)

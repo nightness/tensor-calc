@@ -1,7 +1,7 @@
 [package]
 name = "tensor-calc"
-version = "0.1.2"
-edition = "2021"
+version = "0.1.3"
+edition = "2024"
 description = "World's first Rust-based Einstein field equation solver with symbolic tensor calculus"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/nightness/tensor-calc"
